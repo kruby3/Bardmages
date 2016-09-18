@@ -36,6 +36,9 @@ public class PlayerLife : MonoBehaviour {
 			health = 1f;
 			died = true;
 		}
+        if(health > 1) {
+            health = 1f;
+        }
 
 		greenHealthBar.fillAmount = health/2f + 0.5f;
 		StartCoroutine(HealthBarCatchup());

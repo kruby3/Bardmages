@@ -3178,6 +3178,18 @@ Prefab:
       propertyPath: m_Name
       value: Player_1
       objectReference: {fileID: 0}
+    - target: {fileID: 114000014196847522, guid: 79f9bcf772674475c8dce8b345322f97,
+        type: 2}
+      propertyPath: tunes.Array.data[0]
+      value: 
+      objectReference: {fileID: 114000011396993340, guid: 25da98d4970c849e1b5c668572a12180,
+        type: 2}
+    - target: {fileID: 114000014196847522, guid: 79f9bcf772674475c8dce8b345322f97,
+        type: 2}
+      propertyPath: tunes.Array.data[1]
+      value: 
+      objectReference: {fileID: 114000012703513154, guid: 5d22fb4156c36fb46a9aefb74c92d3a6,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 79f9bcf772674475c8dce8b345322f97, type: 2}
   m_IsPrefabParent: 0
