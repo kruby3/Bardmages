@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Mine : Attack {
-	void Start () {
+	protected override void Start () {
         transform.GetChild(0).GetComponent<ParticleSystem>().Stop();
 
         //TODO: Color should depend on the color of the mine's owner
@@ -21,8 +21,8 @@ public class Mine : Attack {
     protected override void OnTriggerEnter(Collider other)
     {
         //Player won't detonate the mine
-        if (other.gameObject.GetComponent<PlayerControl>() 
-            && other.gameObject.GetComponent<PlayerControl>().player != agressor)
+		if (other.gameObject.GetComponent<BaseControl>() 
+			&& other.gameObject.GetComponent<BaseControl>().player != agressor)
         {
             base.OnTriggerEnter(other);
 

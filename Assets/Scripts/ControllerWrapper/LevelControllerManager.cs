@@ -18,7 +18,6 @@ public class LevelControllerManager : MonoBehaviour {
     {
         if (instance == null)
         {
-			DontDestroyOnLoad(this);
             instance = this;
             cm = new ControllerManager();
         }
@@ -48,7 +47,9 @@ public class LevelControllerManager : MonoBehaviour {
     /// <param name="playerID">The ID of the player to register.</param>
     /// <param name="control">The control component of the player to register.</param>
     public void AddPlayer(PlayerID playerID, BaseControl control) {
-        LevelManager.instance.playerDict.Add(playerID,control);
-        LevelManager.instance.playerUI[(int)control.player - 1].SetupUI();
+        if (playerID != PlayerID.None) {
+            LevelManager.instance.playerDict.Add(playerID,control);
+            LevelManager.instance.GetPlayerUI(control.player).SetupUI();
+        }
     }
 }

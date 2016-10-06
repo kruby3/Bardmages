@@ -100,7 +100,7 @@ public abstract class BaseBard : MonoBehaviour {
                     StopAllCoroutines();
                     foreach (Tune x in tunes) {
                         x.ResetTune();
-                        LevelManager.instance.playerUI[(int)control.player - 1].TuneReset();
+                        LevelManager.instance.GetPlayerUI(control.player).TuneReset();
                     }
                 }
             }
@@ -126,7 +126,7 @@ public abstract class BaseBard : MonoBehaviour {
         yield return new WaitForSeconds(LevelManager.instance.Tempo*2f);
         foreach (Tune x in tunes) {
             x.ResetTune();
-            LevelManager.instance.playerUI[(int)control.player - 1].TuneReset();
+            LevelManager.instance.GetPlayerUI(control.player).TuneReset();
             currentTunes.Clear();
         }
         yield return null;
@@ -135,7 +135,7 @@ public abstract class BaseBard : MonoBehaviour {
     private void IterateTune(Tune t) {
         buttonPressDelayTimer = buttonPressDelay;
 
-        LevelManager.instance.playerUI[(int)control.player - 1].TuneProgressed(t);
+        LevelManager.instance.GetPlayerUI(control.player).TuneProgressed(t);
 
         StopAllCoroutines();
         StartCoroutine(TuneTimeOut());
@@ -143,7 +143,7 @@ public abstract class BaseBard : MonoBehaviour {
         if(t.IterateTune()) {
             foreach (Tune x in tunes) {
                 x.ResetTune();
-                LevelManager.instance.playerUI[(int)control.player - 1].TuneReset();
+                LevelManager.instance.GetPlayerUI(control.player).TuneReset();
                 currentTunes.Clear();
             }
         }

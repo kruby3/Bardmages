@@ -27,7 +27,7 @@ public class ControllerManager  {
 
 	public void ClearPlayers()
 	{
-		playerControls = new Dictionary<PlayerID, ControllerInputWrapper>();
+        playerControls = new Dictionary<PlayerID, ControllerInputWrapper>();
 	}
 
 	public int NumPlayers {
@@ -52,8 +52,8 @@ public class ControllerManager  {
 	}
 
 	public void ResetInputs() {
-		playerControls = new Dictionary<PlayerID, ControllerInputWrapper>();
-	}
+        ClearPlayers();
+    }
 
 	public bool AddPlayer(ControllerInputWrapper.Buttons connectCode) {
 		KeyboardWrapper kw = new KeyboardWrapper(-1);
@@ -96,7 +96,7 @@ public class ControllerManager  {
 				playerControls.Remove(currentID);
 				if (i < 4) {
 					playerControls.Add((PlayerID)(i + 1), controller);
-				}
+                }
 			}
 			id = 1;
 		}

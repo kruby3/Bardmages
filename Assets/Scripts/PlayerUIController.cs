@@ -22,7 +22,7 @@ public class PlayerUIController : MonoBehaviour {
     /// <summary>
     /// Initializes UI fields to track the player.
     /// </summary>
-	public void SetupUI () {
+	public virtual void SetupUI () {
 		tunes = LevelManager.instance.playerDict[player].GetComponent<BaseBard>().tunes;
 		tune1Keys = new Image[tunes[0].tune.Length];
 		tune2Keys = new Image[tunes[1].tune.Length];
@@ -78,7 +78,7 @@ public class PlayerUIController : MonoBehaviour {
 			circle.localScale = Vector3.one*(1+LevelManager.instance.BeatValue(0));
 	}
 
-	public void TuneProgressed(Tune t) {
+	public virtual void TuneProgressed(Tune t) {
 		for(int i = 0; i < tunes.Length; i++) {
 			if(tunes[i].Equals(t)) {
 				StopCoroutine(ResetTuneTimer(i));
@@ -89,7 +89,7 @@ public class PlayerUIController : MonoBehaviour {
 		}
 	}
 
-	public void TuneReset() {
+	public virtual void TuneReset() {
 		StopAllCoroutines();
 		for(int i = 0; i < tune1Keys.Length; i++) {
 			tune1Keys[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(rightSideUI ? 30 + 40*i : -(30 + 40*i),0f);
@@ -151,7 +151,7 @@ public class PlayerUIController : MonoBehaviour {
 		yield return null;
 	}
 
-	public void UpdateHealth(float amount, bool died) {
+	public virtual void UpdateHealth(float amount, bool died) {
 		if(healthBar) {
 			healthBar.fillAmount = amount;
 			deaths++;

@@ -6,7 +6,7 @@ public class Grenade : Attack {
 
 	float timer = 2f;
 
-	void Start() {
+	protected override void Start() {
 		base.Start();
 		if(this.crit) {
 			GetComponent<Rigidbody>().AddForce((transform.forward*4f + Vector3.up)*4f, ForceMode.VelocityChange);

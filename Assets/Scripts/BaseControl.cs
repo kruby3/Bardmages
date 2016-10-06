@@ -13,13 +13,15 @@ public abstract class BaseControl : MonoBehaviour {
 
     private Vector2 knockback;
 
-    // Use this for initialization
-    void Start () {
+    /// <summary>
+    /// Use this for initialization.
+    /// </summary>
+    protected virtual void Start () {
         charControl = GetComponent<CharacterController>();
         move = Vector2.zero;
     }
 
-    // Update is called once per frame
+    // Update is called once per frame.
     void Update () {
 
         Vector2 rawInput = GetDirectionInput();

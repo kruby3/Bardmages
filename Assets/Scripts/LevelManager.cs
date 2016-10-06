@@ -6,7 +6,15 @@ public class LevelManager : MonoBehaviour {
 
 	public static LevelManager instance;
 
-	public PlayerUIController[] playerUI;
+    /// <summary> The player UI controllers in the scene. </summary>
+    [SerializeField]
+    [Tooltip("The player UI controllers in the scene.")]
+	private PlayerUIController[] playerUI;
+
+    /// <summary> The placeholder UI controller for minions. </summary>
+    [SerializeField]
+    [Tooltip("The placeholder UI controller for minions.")]
+    private NullUIController nullUI;
 
 	public Dictionary<PlayerID, BaseControl> playerDict;
 
@@ -72,7 +80,6 @@ public class LevelManager : MonoBehaviour {
     public float PerfectTiming (RhythmType rhythmType = RhythmType.None) {
 		float calcTempo = 60f/BPM;
 
-		float val = 2f;
 		int samplesInTempo = (int)(music.clip.frequency*calcTempo);
 		int samplesPastBeat = music.timeSamples%(samplesInTempo);
 
@@ -135,6 +142,18 @@ public class LevelManager : MonoBehaviour {
                 rhythmTypes.Add(RhythmType.Triplet);
             }
             return rhythmTypes;
+        }
+    }
+
+    /// <summary>
+    /// Gets the player UI corresponding to the given player ID.
+    /// </summary>
+    /// <param name="player">The player ID to get a player UI for.</param>
+    public PlayerUIController GetPlayerUI(PlayerID player) {
+        if (player == PlayerID.None) {
+            return nullUI;
+        } else {
+            return LevelManager.instance.playerUI[(int)player - 1];
         }
     }
 }

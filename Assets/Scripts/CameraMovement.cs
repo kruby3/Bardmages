@@ -20,6 +20,9 @@ public class CameraMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		if(targets.Length == 0) return;
+
 		Vector3 averagePosition = Vector3.zero;
 
 		foreach(Transform t in targets) {

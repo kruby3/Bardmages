@@ -57,3 +57,5 @@ MonoBehaviour:
   tuneProgress: 0
   ownerTransform: {fileID: 0}
   tuneName: Grenade
+  maxDistance: 25
+  minDistance: 10
